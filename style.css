@@ -1,0 +1,260 @@
+:root {
+  --primary: #5b8dee;
+  --primary-dark: #4070cc;
+  --correct: #27ae60;
+  --incorrect: #e74c3c;
+  --bg: #eef2f7;
+  --card: #ffffff;
+  --text: #2c3e50;
+  --text-sub: #7f8c8d;
+  --border: #d0d7e2;
+  --radius: 14px;
+  --shadow: 0 8px 24px rgba(91, 141, 238, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 560px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ---- カード ---- */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 36px 32px;
+}
+
+/* ---- スタート画面 ---- */
+.screen {
+  text-align: center;
+}
+
+.app-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.description {
+  color: var(--text-sub);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 36px;
+}
+
+/* ---- プログレスバー ---- */
+.progress-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+#progress-text {
+  font-size: 0.85rem;
+  color: var(--text-sub);
+  white-space: nowrap;
+  min-width: 72px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+  width: 20%;
+}
+
+/* ---- 問題文 ---- */
+.question-text {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+/* ---- 選択肢 ---- */
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.choice-btn {
+  background: #f5f7fa;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 0.97rem;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  line-height: 1.5;
+}
+
+.choice-btn:hover:not(:disabled) {
+  background: #e8eef8;
+  border-color: var(--primary);
+}
+
+.choice-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.choice-btn.correct {
+  background: #eafaf1;
+  border-color: var(--correct);
+  color: #1a7a46;
+  font-weight: 600;
+}
+
+.choice-btn.incorrect {
+  background: #fdedec;
+  border-color: var(--incorrect);
+  color: #c0392b;
+}
+
+.choice-btn:disabled {
+  cursor: default;
+}
+
+/* ---- フィードバック ---- */
+.feedback {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.93rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.feedback.is-correct {
+  background: #eafaf1;
+  color: #1a7a46;
+  border-left: 4px solid var(--correct);
+}
+
+.feedback.is-incorrect {
+  background: #fdedec;
+  color: #c0392b;
+  border-left: 4px solid var(--incorrect);
+}
+
+/* ---- ボタン ---- */
+.btn {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 36px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn:hover {
+  background: var(--primary-dark);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* ---- 結果画面 ---- */
+.result-card {
+  padding: 48px 32px;
+}
+
+.result-title {
+  font-size: 1.6rem;
+  color: var(--text);
+  margin-bottom: 28px;
+}
+
+.score-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 5px solid var(--primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.score-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  margin-top: 4px;
+}
+
+.result-message {
+  color: var(--text-sub);
+  font-size: 1rem;
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+/* ---- レスポンシブ ---- */
+@media (max-width: 480px) {
+  .card {
+    padding: 24px 18px;
+  }
+
+  .app-title {
+    font-size: 1.6rem;
+  }
+
+  .question-text {
+    font-size: 1.05rem;
+  }
+
+  .result-card {
+    padding: 36px 18px;
+  }
+}
